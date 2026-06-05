@@ -1,199 +1,397 @@
-/*
- * CSS Modernizado - André Lanches
- */
+/* Variáveis globais de cores e fontes */
+:root {
+  --cor-primaria: #e50021;
+  --cor-fundo: #ffe18c;
+  --cor-texto-escuro: #333333;
+  --cor-texto-claro: #ffffff;
+  --fonte-principal: Candara, Helvetica, sans-serif;
+}
+
+/* Reset básico */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
 body {
-    background-color: #ffe18c;
-    font-family: Candara, Helvetica, sans-serif;    
-    margin: 0;
+  background-color: var(--cor-fundo);
+  font-family: var(--fonte-principal);
+  color: var(--cor-texto-escuro);
 }
 
-/* Header e Logo (Refatorado com Flexbox) */
-#header {
-    width: 100%;
-    padding-top: 10px;
+/* =========================================
+   Container Principal
+   ========================================= */
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
-#logo {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 15px;
-    height: 100px;
-    margin-bottom: 10px;
+.main-content {
+  flex: 1;
+  width: 90%;
+  max-width: 900px;
+  margin: 40px auto;
+  background-color: var(--cor-texto-claro);
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
 }
 
-#logoImg {
-    width: 100px;
-    height: 100px;
+/* =========================================
+   Cabeçalho e Logo
+   ========================================= */
+.site-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
 }
 
-#tituloLogo {
-    color: #e50021;
-    font-size: 50px;
-    margin: 0;
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 20px 0;
 }
 
-/* Menu (Refatorado com Flexbox) */
-#menu {
-    width: 100%;
-    background-color: #e50021;
-    display: flex;
-    justify-content: center;
+.logo-img {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
 }
 
-.listaMenu {
-    display: flex;
-    list-style: none;
-    margin: 0;
-    padding: 0;
+.logo-title {
+  color: var(--cor-primaria);
+  font-size: 3rem;
 }
 
-.listaMenu li a {
-    text-decoration: none;
-    height: 50px;
-    line-height: 50px;
-    padding: 0 20px;
-    display: block; /* Expande o link para o tamanho do li */
-    color: white;
-    transition: background-color 0.3s ease, color 0.3s ease; /* Transição suave moderna */
+/* =========================================
+   Menu de Navegação
+   ========================================= */
+.nav-menu {
+  width: 100%;
+  background-color: var(--cor-primaria);
+  padding: 10px 0;
 }
 
-.listaMenu li a:hover {
-    color: #e50021;
-    background-color: white;
+.nav-list {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  list-style: none;
 }
 
-#menuAtual {
-    text-transform: uppercase;
-    font-weight: bold;
+.nav-link {
+  background: none;
+  border: none;
+  color: var(--cor-texto-claro);
+  font-family: var(--fonte-principal);
+  font-size: 1.1rem;
+  font-weight: bold;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Container Principal */
-#content {
-    max-width: 800px; /* Uso de max-width em vez de width fixo para melhor adaptação */
-    margin: 0 auto; /* Centraliza a div automaticamente sem necessidade de margens negativas */
-    background-color: white;
-    padding-bottom: 40px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1); /* Sombra moderna sutil */
+.nav-link:hover,
+.nav-link.active {
+  background-color: var(--cor-texto-claro);
+  color: var(--cor-primaria);
 }
 
-/* Banner Promocional */
-#promotionBanner {
-    height: 200px;
-    background-image: url('/images/promocao.jpg');
-    background-size: cover; /* Faz a imagem cobrir todo o espaço */
-    background-position: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding-left: 40px;
-    position: relative;
+/* =========================================
+   Banner de Promoção
+   ========================================= */
+.promotion-banner {
+  height: 200px;
+  background-image: url('/image/promocao.jpg');
+  background-size: cover;
+  background-position: center;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 40px;
+  margin-bottom: 30px;
+  position: relative;
+  overflow: hidden;
 }
 
-#promocaoH1 {
-    color: white;
-    font-size: 64px;
-    margin: 0;
-    text-shadow: 2px 2px 4px #e50021;
+.promotion-banner::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0, 0, 0, 0.4); /* Escurece a imagem para o texto destacar */
+  z-index: 1;
 }
 
-#promocaoValor {
-    color: white;
-    font-size: 48px;
-    margin: 0;
-    text-shadow: 2px 2px 4px #e50021;
+.promotion-title,
+.promotion-value {
+  position: relative;
+  z-index: 2;
+  color: var(--cor-texto-claro);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
 }
 
-#tituloConteudo {
-    color: #e50021;
-    text-align: center;
-    margin: 30px 0 20px 0;
+.promotion-title {
+  font-size: 3rem;
+  margin-bottom: 10px;
 }
 
-/* Área de Produtos (Substituição de Tabelas por CSS Grid) */
-#areaProdutos {
-    padding: 0 20px;
+.promotion-value {
+  font-size: 2rem;
 }
 
-#areaProdutos table {
-    width: 100%;
-    border-collapse: separate;
-    border-spacing: 20px;
+.promotion-value span {
+  color: #ffeb3b;
+  font-weight: bold;
 }
 
-#areaProdutos td {    
-    text-align: center;
-    color: #e50021;
-    font-size: 20px;
-    vertical-align: top;
+/* =========================================
+   Cardápio e Produtos
+   ========================================= */
+.products-section {
+  text-align: center;
 }
 
-#areaProdutos td img {
-    width: 150px;
-    height: 150px;
-    margin-top: 5px;
-    border-radius: 50%;
-    border: 3px solid #e50021;
-    object-fit: cover; /* Evita que a imagem distorça */
-    transition: transform 0.3s ease; /* Efeito de hover moderno */
+.section-title {
+  color: var(--cor-primaria);
+  font-size: 2.2rem;
+  margin-bottom: 30px;
 }
 
-#areaProdutos td img:hover {
-    transform: scale(1.05); /* Leve zoom ao passar o mouse */
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+  justify-items: center;
 }
 
-.tituloProduto {
-    font-weight: bold;
-    margin: 0 0 10px 0;
+.product-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 250px;
 }
 
-.precoProduto {
-    margin: 10px 0 0 0;
-    font-weight: bold;
+.product-image-wrapper img {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid var(--cor-primaria);
+  box-shadow: 0 4px 10px rgba(229, 0, 33, 0.2);
+  margin-bottom: 15px;
 }
 
-/* Bloco de Entrega */
-#entrega {
-    position: fixed;
-    bottom: 30px;
-    right: 30px; /* Ajustado para não colar na tela */
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    z-index: 1000; /* Garante que fique acima dos outros elementos */
+.product-name {
+  color: var(--cor-primaria);
+  font-size: 1.3rem;
+  margin-bottom: 5px;
 }
 
-#tel {
-    background-color: #e50021;
-    color: white;
-    padding: 15px 20px;
-    border-radius: 15px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
-    text-align: center;
+.product-price {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: var(--cor-texto-escuro);
+  margin-bottom: 15px;
 }
 
-#tel h4 {
-    margin: 0;
-    font-size: 28px;
+.order-button {
+  background-color: var(--cor-primaria);
+  color: var(--cor-texto-claro);
+  border: none;
+  padding: 10px 25px;
+  border-radius: 25px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.2s ease, background-color 0.2s ease;
 }
 
-#tel h5 {
-    margin: 5px 0 0 0;
-    font-size: 14px;
-    font-weight: normal;
+.order-button:hover {
+  background-color: #c4001c;
+  transform: scale(1.05);
 }
 
-#tel a {
-    color: white;
-    text-decoration: none;
+/* =========================================
+   Páginas de Informação (Sobre / Contato)
+   ========================================= */
+.info-section {
+  text-align: center;
+  line-height: 1.6;
+  font-size: 1.1rem;
 }
 
-#entrega img {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    border: 3px solid #e50021;
-    background-color: white;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+.contact-details {
+  margin-top: 20px;
+  background-color: var(--cor-fundo);
+  padding: 20px;
+  border-radius: 8px;
+  display: inline-block;
+  text-align: left;
+}
+
+/* =========================================
+   Rodapé / Ícone de Entrega
+   ========================================= */
+.delivery-footer {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  background-color: var(--cor-primaria);
+  padding: 10px 20px;
+  border-radius: 50px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+  transition: transform 0.3s ease;
+}
+
+.delivery-footer:hover {
+  transform: scale(1.05);
+}
+
+.delivery-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.phone-link {
+  color: var(--cor-texto-claro);
+  text-decoration: none;
+  font-size: 1.4rem;
+  font-weight: bold;
+}
+
+.delivery-badge {
+  color: var(--cor-texto-claro);
+  font-size: 0.85rem;
+  margin: 0;
+}
+
+.delivery-icon img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 2px solid var(--cor-texto-claro);
+}
+
+
+.product-image-wrapper img {
+  transition: transform 0.8s ease, background-color 0.2s ease, border-color 0.2s ease;
+  transform-origin: center center;
+}
+
+.product-card:hover .product-image-wrapper img {
+  transform: rotate(360deg);
+}
+
+
+/* =========================================
+   Carrinho
+   ========================================= */
+.cart-section {
+  text-align: center;
+}
+
+.empty-cart-msg {
+  font-size: 1.2rem;
+  color: #666;
+  margin-top: 20px;
+}
+
+.cart-list {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 20px;
+}
+
+.cart-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--cor-fundo);
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+.cart-item-img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--cor-primaria);
+}
+
+.cart-item-info {
+  flex: 1;
+  text-align: left;
+  margin-left: 15px;
+}
+
+.cart-item-info h4 {
+  margin: 0 0 5px 0;
+  color: var(--cor-primaria);
+  font-size: 1.2rem;
+}
+
+.cart-item-info p {
+  margin: 0;
+  font-weight: bold;
+}
+
+.remove-btn {
+  background-color: transparent;
+  color: var(--cor-primaria);
+  border: 1px solid var(--cor-primaria);
+  padding: 8px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.2s ease;
+}
+
+.remove-btn:hover {
+  background-color: var(--cor-primaria);
+  color: var(--cor-texto-claro);
+}
+
+.cart-summary {
+  border-top: 2px solid #ddd;
+  padding-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.cart-summary h3 {
+  margin-bottom: 15px;
+  color: var(--cor-primaria);
+  font-size: 1.5rem;
+}
+
+.checkout-btn {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  padding: 15px 30px;
+  border-radius: 25px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.checkout-btn:hover {
+  background-color: #218838;
 }
