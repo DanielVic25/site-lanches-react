@@ -1,0 +1,199 @@
+/*
+ * CSS Modernizado - André Lanches
+ */
+
+body {
+    background-color: #ffe18c;
+    font-family: Candara, Helvetica, sans-serif;    
+    margin: 0;
+}
+
+/* Header e Logo (Refatorado com Flexbox) */
+#header {
+    width: 100%;
+    padding-top: 10px;
+}
+
+#logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    height: 100px;
+    margin-bottom: 10px;
+}
+
+#logoImg {
+    width: 100px;
+    height: 100px;
+}
+
+#tituloLogo {
+    color: #e50021;
+    font-size: 50px;
+    margin: 0;
+}
+
+/* Menu (Refatorado com Flexbox) */
+#menu {
+    width: 100%;
+    background-color: #e50021;
+    display: flex;
+    justify-content: center;
+}
+
+.listaMenu {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.listaMenu li a {
+    text-decoration: none;
+    height: 50px;
+    line-height: 50px;
+    padding: 0 20px;
+    display: block; /* Expande o link para o tamanho do li */
+    color: white;
+    transition: background-color 0.3s ease, color 0.3s ease; /* Transição suave moderna */
+}
+
+.listaMenu li a:hover {
+    color: #e50021;
+    background-color: white;
+}
+
+#menuAtual {
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+/* Container Principal */
+#content {
+    max-width: 800px; /* Uso de max-width em vez de width fixo para melhor adaptação */
+    margin: 0 auto; /* Centraliza a div automaticamente sem necessidade de margens negativas */
+    background-color: white;
+    padding-bottom: 40px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1); /* Sombra moderna sutil */
+}
+
+/* Banner Promocional */
+#promotionBanner {
+    height: 200px;
+    background-image: url('/images/promocao.jpg');
+    background-size: cover; /* Faz a imagem cobrir todo o espaço */
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 40px;
+    position: relative;
+}
+
+#promocaoH1 {
+    color: white;
+    font-size: 64px;
+    margin: 0;
+    text-shadow: 2px 2px 4px #e50021;
+}
+
+#promocaoValor {
+    color: white;
+    font-size: 48px;
+    margin: 0;
+    text-shadow: 2px 2px 4px #e50021;
+}
+
+#tituloConteudo {
+    color: #e50021;
+    text-align: center;
+    margin: 30px 0 20px 0;
+}
+
+/* Área de Produtos (Substituição de Tabelas por CSS Grid) */
+#areaProdutos {
+    padding: 0 20px;
+}
+
+#areaProdutos table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 20px;
+}
+
+#areaProdutos td {    
+    text-align: center;
+    color: #e50021;
+    font-size: 20px;
+    vertical-align: top;
+}
+
+#areaProdutos td img {
+    width: 150px;
+    height: 150px;
+    margin-top: 5px;
+    border-radius: 50%;
+    border: 3px solid #e50021;
+    object-fit: cover; /* Evita que a imagem distorça */
+    transition: transform 0.3s ease; /* Efeito de hover moderno */
+}
+
+#areaProdutos td img:hover {
+    transform: scale(1.05); /* Leve zoom ao passar o mouse */
+}
+
+.tituloProduto {
+    font-weight: bold;
+    margin: 0 0 10px 0;
+}
+
+.precoProduto {
+    margin: 10px 0 0 0;
+    font-weight: bold;
+}
+
+/* Bloco de Entrega */
+#entrega {
+    position: fixed;
+    bottom: 30px;
+    right: 30px; /* Ajustado para não colar na tela */
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    z-index: 1000; /* Garante que fique acima dos outros elementos */
+}
+
+#tel {
+    background-color: #e50021;
+    color: white;
+    padding: 15px 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+    text-align: center;
+}
+
+#tel h4 {
+    margin: 0;
+    font-size: 28px;
+}
+
+#tel h5 {
+    margin: 5px 0 0 0;
+    font-size: 14px;
+    font-weight: normal;
+}
+
+#tel a {
+    color: white;
+    text-decoration: none;
+}
+
+#entrega img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 3px solid #e50021;
+    background-color: white;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+}
